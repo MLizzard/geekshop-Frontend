@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ProductsPage from './pages/ProductsPage';
+import ProductsPage from './pages/ProductsPage/ProductsPage';
 
 function App() {
     return (

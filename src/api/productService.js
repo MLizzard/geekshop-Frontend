@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:8080/api/v1';
 
-export const ProductService = {
+const ProductService = {
     async getProducts() {
         try {
             const response = await axios.get(`${API_URL}/products`);
@@ -13,3 +13,5 @@ export const ProductService = {
         }
     }
 };
+
+export default ProductService;
