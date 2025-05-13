@@ -64,7 +64,44 @@ const ProductService = {
         console.error('Error deleting product:', error);
         throw error;
     }
-}
+    },
+    async getCategories() {
+    try {
+        const response = await axios.get(`${API_URL}/categories`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching categories:', error);
+        throw error;
+    }
+    },
+
+    async updateCategory(id, data) {
+    try {
+        const response = await axios.put(`${API_URL}/categories/${id}`, data);
+        return response.data;
+    } catch (error) {
+        console.error('Error updating category:', error);
+        throw error;
+    }
+    },
+
+    async deleteCategory(id) {
+    try {
+        await axios.delete(`${API_URL}/categories/${id}`);
+    } catch (error) {
+        console.error('Error deleting category:', error);
+        throw error;
+    }
+    },
+    async createCategory(data) {
+    try {
+        const response = await axios.post(`${API_URL}/categories`, data);
+        return response.data;
+    } catch (error) {
+        console.error('Error creating category:', error);
+        throw error;
+    }
+    }
 };
 
 export default ProductService;
