@@ -53,3 +53,51 @@
     font-size: 13px;
     color: gray;
 }
+
+.card-actions {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+.edit-button, .delete-button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    opacity: 0; /* Скрываем по умолчанию */
+    transform: translateY(5px);
+}
+
+.delete-button {
+    color: #ef4444;
+    border-color: #fecaca;
+}
+
+.delete-button:hover {
+    background-color: #fee2e2;
+}
+
+.edit-button:hover {
+    background-color: #f3f4f6;
+}
+
+.product-card:hover .edit-button,
+.product-card:hover .delete-button {
+    opacity: 1; /* Показываем при наведении */
+    transform: translateY(0);
+}
+
+/* Задержка для анимации (опционально) */
+.product-card:hover .delete-button {
+    transition-delay: 0.05s;
+}
