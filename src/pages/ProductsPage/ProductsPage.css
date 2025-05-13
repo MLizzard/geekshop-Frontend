@@ -1,4 +1,5 @@
 .products-page {
+    display: flex; /* Add this to enable Flexbox */
     padding: 20px;
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
@@ -6,10 +7,26 @@
     margin: 0 auto;
 }
 
+.products-filter {
+    width: 200px; /* Your existing width */
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin-right: 20px; /* This will create space between filter and content */
+    flex-shrink: 0; /* Prevent the filter from shrinking */
+}
+
+.products-content {
+    flex-grow: 1; /* Allow the content to take up the remaining space */
+    /* You might want to remove any specific width if it was set previously,
+       or adjust it as needed if it's inside another wrapper */
+}
+
 .page-title {
     font-size: 28px;
     margin-bottom: 20px;
-    text-align: center;
+    text-align: center; /* This will center only within .products-content if .page-header doesn't span full width */
 }
 
 .product-grid {
@@ -24,6 +41,7 @@
     padding: 40px;
     font-size: 18px;
     color: #555;
+    width: 100%; /* Ensure loading message takes full width if products-page is flex */
 }
 
 .page-header {
@@ -75,6 +93,39 @@
 }
 
 .edit-button svg {
-    width: 50px;
+    width: 50px; /* Note: This seems quite large for a 32x32px button. You might want to adjust SVG size or button padding. */
     height: 50px;
+}
+
+.products-filter h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.products-filter ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.products-filter li {
+    padding: 8px 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    color: #555;
+}
+
+.products-filter li:last-child {
+    border-bottom: none;
+}
+
+.products-filter li.active {
+    font-weight: bold;
+    color: #007bff; /* Цвет активной категории */
+    background-color: #e9ecef;
+}
+
+.products-filter li:hover {
+    background-color: #f0f0f0;
 }

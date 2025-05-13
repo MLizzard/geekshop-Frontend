@@ -8,6 +8,7 @@ function App() {
     return (
         <BrowserRouter>
             <Header />
+            <main style={{ marginTop: '20px' }}/> 
             <Routes>
                 <Route path="/" element={<ProductsPage />} />
                 <Route path="/categories" element={<CategoriesPage />} />

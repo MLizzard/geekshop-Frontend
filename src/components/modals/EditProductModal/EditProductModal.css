@@ -1,37 +1,166 @@
-/* Основные стили такие же как у AddProductModal */
-.image-preview {
-    width: 100%;
-    height: 150px;
-    margin-bottom: 10px;
-    border: 1px dashed #ddd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+/* Стили для затемнения фона и центрирования модального окна */
+.modal-overlay {
+  position: fixed; /* Остается на месте при прокрутке */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Полупрозрачный черный фон */
+  display: flex;
+  justify-content: center; /* Центрирование по горизонтали */
+  align-items: center; /* Центрирование по вертикали */
+  z-index: 1000; /* Поверх других элементов */
+  padding: 20px; /* Небольшой отступ, чтобы окно не прилипало к краям на маленьких экранах */
+  box-sizing: border-box;
 }
 
-.image-preview img {
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: contain;
+/* Стили для самого модального окна (контентной части) */
+.modal-content {
+  background-color: #fff; /* Белый фон */
+  padding: 25px; /* Внутренние отступы */
+  border-radius: 8px; /* Скругленные углы */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Тень для эффекта "окна" */
+  width: 100%; /* Ширина относительно родителя (overlay) */
+  max-width: 500px; /* Максимальная ширина, чтобы не было слишком широким на больших экранах */
+  max-height: 90vh; /* Максимальная высота относительно высоты видимой области окна браузера */
+  box-sizing: border-box; /* Чтобы padding и border не увеличивали общую ширину/высоту */
 }
 
+.modal-content h2 {
+  margin-top: 0; /* Убрать верхний отступ у заголовка */
+  margin-bottom: 10px; /* Отступ под заголовком */
+  font-size: 1.4rem; /* Размер шрифта заголовка */
+  text-align: center; /* Выровнять заголовок по центру */
+  color: #333;
+}
+
+/* Стили для групп полей формы */
 .form-group {
-    margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px; /* Уменьшенное расстояние между label и input/select/textarea */
+  margin-bottom: 5px; /* Уменьшенное расстояние между группами полей */
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 500;
+  font-weight: 500;
+  font-size: 0.875rem; /* Немного уменьшим шрифт метки */
+  color: #555;
 }
 
-.form-group {
+/* Стили для полей ввода, текстовых областей и выпадающих списков */
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="file"],
+.form-group textarea,
+.form-group select {
+  width: 100%; /* Занимают всю доступную ширину */
+  padding: 8px 10px; /* Внутренние отступы */
+  border: 1px solid #ccc; /* Граница */
+  border-radius: 4px; /* Скругленные углы */
+  box-sizing: border-box; /* Чтобы padding и border не увеличивали общую ширину */
+  font-size: 0.9rem;
+  margin-top: 2px; /* Небольшой отступ сверху от метки, если gap не справляется */
+}
+
+.form-group input[type="file"] {
+  padding: 5px; /* Особый паддинг для input type file для лучшего вида */
+}
+
+.form-group textarea {
+  resize: vertical; /* Позволяет изменять размер только по вертикали */
+  min-height: 70px; /* Минимальная высота */
+}
+
+/* Стили для чекбокса "В наличии" */
+/* Контейнер для чекбокса и его метки, чтобы выровнять их */
+.form-group label[for="inStock-checkbox"] { /* Предполагается, что можно добавить id чекбоксу для таргетинга */
     display: flex;
-    flex-direction: column;
-    gap: 16px;
+    align-items: center;
+    gap: 8px; /* Расстояние между чекбоксом и текстом */
+    font-weight: normal; /* Обычный вес для текста чекбокса */
 }
 
+/* Если вы не хотите добавлять id, можно стилизовать label, содержащую чекбокс, если она уникальна */
+/* Для текущей структуры JSX: */
+.form-group label input[type="checkbox"] {
+  margin-right: 6px; /* Отступ справа от чекбокса */
+  vertical-align: middle; /* Выравнивание по центру с текстом */
+  width: auto; /* Чекбоксы не должны быть 100% ширины */
+  height: auto; /* Убрать возможные унаследованные стили */
+}
+/* Убедитесь, что текст "В наличии" находится внутри label после input */
+
+
+/* Предпросмотр изображения */
+.image-preview {
+  width: 100%;
+  height: 120px; /* Уменьшим высоту предпросмотра */
+  margin-top: 4px; /* Небольшой отступ сверху, если есть label */
+  margin-bottom: 8px; /* Отступ под превью */
+  border: 1px dashed #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: #f9f9f9; /* Легкий фон для пустой области */
+  border-radius: 4px;
+}
+
+.image-preview img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain; /* Сохраняет пропорции, вписывая изображение */
+}
+
+/* Кнопки действий в модальном окне */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end; /* Кнопки справа */
+  gap: 10px; /* Расстояние между кнопками */
+  margin-top: 20px; /* Отступ сверху от последней группы полей */
+}
+
+.modal-actions button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modal-actions button[type="submit"] {
+  background-color: #007bff; /* Синий для основной кнопки */
+  color: white;
+}
+
+.modal-actions button[type="submit"]:hover {
+  background-color: #0056b3;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.modal-actions button[type="button"] {
+  background-color: #f0f0f0; /* Светло-серый для кнопки отмены */
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.modal-actions button[type="button"]:hover {
+  background-color: #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.modal-actions button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  color: #666;
+  box-shadow: none;
+}
+
+/* Удалите или закомментируйте неиспользуемые стили, если они специфичны только для EditProductModal */
+/*
 .image-preview-container {
   width: 100%;
   height: 200px;
@@ -44,13 +173,8 @@
   background-color: #fafafa;
 }
 
-.image-preview {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
-
 .placeholder-text {
   color: #8c8c8c;
   font-size: 14px;
 }
+*/

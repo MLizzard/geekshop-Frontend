@@ -101,6 +101,15 @@ const ProductService = {
         console.error('Error creating category:', error);
         throw error;
     }
+    },
+    async getProductsByCategory(categoryId) {
+    try {
+        const response = await axios.get(`${API_URL}/products/search/category/id?categoryId=${categoryId}`);
+        return response.data;
+    } catch (error) {
+        console.error(`Error fetching products for category ${categoryId}:`, error);
+        return [];
+    }
     }
 };
 
