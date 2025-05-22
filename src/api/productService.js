@@ -65,15 +65,6 @@ const ProductService = {
         throw error;
     }
     },
-    async getCategories() {
-    try {
-        const response = await axios.get(`${API_URL}/categories`);
-        return response.data;
-    } catch (error) {
-        console.error('Error fetching categories:', error);
-        throw error;
-    }
-    },
 
     async updateCategory(id, data) {
     try {

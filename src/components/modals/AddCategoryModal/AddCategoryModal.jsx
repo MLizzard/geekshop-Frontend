@@ -10,8 +10,7 @@ const AddCategoryModal = ({ onClose, onSave }) => {
         e.preventDefault();
         setIsLoading(true);
         try {
-            const created = await ProductService.createCategory({ name });
-            onSave(created);
+            onSave({name});
         } catch (error) {
             console.error('Ошибка создания категории:', error);
         } finally {

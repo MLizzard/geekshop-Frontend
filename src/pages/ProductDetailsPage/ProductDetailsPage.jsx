@@ -26,7 +26,7 @@ const ProductDetailsPage = () => {
 
   if (loading) return <div>Загрузка...</div>;
   if (!product) return <div>Товар не найден</div>;
-
+  console.log(product);
   return (
     <div className="product-page">
       <div className="product-header">
