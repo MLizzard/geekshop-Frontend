@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/api/v1';
+const API_URL = 'https://geekshop-v1.onrender.com/api/v1';
 
 const ProductService = {
     async getProducts() {

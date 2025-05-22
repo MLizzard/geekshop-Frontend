@@ -12,7 +12,7 @@ const EditProductModal = ({ product, onClose, onSave }) => {
         image: null
     });
 
-    const URL_API = 'http://localhost:8080/api/v1'
+    const URL_API = 'https://geekshop-v1.onrender.com/api/v1'
 
     const [categories, setCategories] = useState([]);
     const [isLoading, setIsLoading] = useState(false);

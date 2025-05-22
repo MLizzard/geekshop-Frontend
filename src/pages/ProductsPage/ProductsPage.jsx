@@ -14,7 +14,7 @@ const ProductsPage = () => {
     const [showModal, setShowModal] = useState(false);
     const [categories, setCategories] = useState([]); // Состояние для хранения категорий
     const [selectedCategory, setSelectedCategory] = useState(null); // Состояние для выбранной категории
-    const API_URL = 'http://localhost:8080/api/v1';
+    const API_URL = 'https://geekshop-v1.onrender.com/api/v1';
 
     const handleAddProduct = (newProduct) => {
         setProducts(prev => [...prev, newProduct]);

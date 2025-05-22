@@ -7,7 +7,7 @@ const ProductDetailsPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
-  const API_URL = 'http://localhost:8080/api/v1';
+  const API_URL = 'https://geekshop-v1.onrender.com/api/v1';
 
   useEffect(() => {
     const fetchProduct = async () => {
